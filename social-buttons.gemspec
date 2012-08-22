@@ -5,44 +5,70 @@
 
 Gem::Specification.new do |s|
   s.name = "social-buttons"
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy McAnally", "Yuva"]
-  s.date = "2012-07-28"
+  s.date = "2012-08-22"
   s.description = "Generate Social Buttons for your Rails apps"
   s.email = "yuva@codemancers.com"
   s.extra_rdoc_files = [
     "LICENSE",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
+    "Gemfile",
+    "Gemfile.lock",
     "LICENSE",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "init.rb",
     "lib/social_buttons.rb",
-    "lib/social_buttons/like_button.rb",
-    "lib/social_buttons/pinit_button.rb",
-    "lib/social_buttons/tweet_button.rb",
+    "lib/social_buttons/engine.rb",
+    "lib/social_buttons/view_helper.rb",
+    "lib/social_buttons/view_helpers/like.rb",
+    "lib/social_buttons/view_helpers/pinit.rb",
+    "lib/social_buttons/view_helpers/tweet.rb",
     "social-buttons.gemspec",
-    "test/helper.rb",
-    "test/test_tweet-button.rb"
+    "spec/social_buttons/config_spec.rb",
+    "spec/social_buttons/like_spec.rb",
+    "spec/social_buttons/pinit_spec.rb",
+    "spec/social_buttons/tweet_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/view_helper_config.rb"
   ]
   s.homepage = "https://github.com/iffyuva/social-buttons"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "Generate new Social Buttons"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
+      s.add_development_dependency(%q<rspec>, [">= 2.8.0"])
+      s.add_development_dependency(%q<rdoc>, [">= 3.12"])
+      s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_development_dependency(%q<simplecov>, [">= 0.5"])
     else
+      s.add_dependency(%q<rails>, [">= 3.0.0"])
+      s.add_dependency(%q<rspec>, [">= 2.8.0"])
+      s.add_dependency(%q<rdoc>, [">= 3.12"])
+      s.add_dependency(%q<bundler>, [">= 1.0.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_dependency(%q<simplecov>, [">= 0.5"])
     end
   else
+    s.add_dependency(%q<rails>, [">= 3.0.0"])
+    s.add_dependency(%q<rspec>, [">= 2.8.0"])
+    s.add_dependency(%q<rdoc>, [">= 3.12"])
+    s.add_dependency(%q<bundler>, [">= 1.0.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+    s.add_dependency(%q<simplecov>, [">= 0.5"])
   end
 end
 
