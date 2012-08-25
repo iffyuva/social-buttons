@@ -1,6 +1,6 @@
 module SocialButtons
   def self.names
-    %w{pinit tweet like}
+    %w{pinit tweet like google_plus}
   end
 
   def self.config name = nil, &block 
@@ -15,10 +15,6 @@ module SocialButtons
       block_given? ? clazz.instance_eval(&block) : clazz
     end
   end
-end
-
-SocialButtons.names.each do |name|
-  require "social_buttons/view_helpers/#{name}"
 end
 
 require "social_buttons/view_helper"

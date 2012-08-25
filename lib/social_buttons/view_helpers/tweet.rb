@@ -1,43 +1,43 @@
 module SocialButtons
   module Tweet
+    include SocialButtons::Assistant
+
     TWITTER_SHARE_URL = "http://twitter.com/share"
+    CLASS = "twitter-share-button"
 
     def tweet_button(options = {})
-      params = tweet_options_to_data_params(default_options.merge(options))
-      params.merge!(class: "twitter-share-button")
+      clazz = SocialButtons::Tweet
+      params = clazz.options_to_data_params(clazz.default_options.merge(options))
+      params.merge!(class: CLASS)
 
       html = "".html_safe
-      html << tweet_widgets_js_tag unless @tweet_widgetized
+      html << clazz.script
       html << link_to("Tweet", TWITTER_SHARE_URL, params)
+      html
     end
 
     class << self
-      attr_accessor :default_options
-    end
+      def default_options
+        @default_options ||= {
+          url:    request.url,
+          via:    "tweetbutton",
+          text:   "",
+          count:  "vertical",
+          lang:   "en",
+          related: ""
+        }
+      end
 
-    def default_options
-      options = {
-        url:    request.url,
-        via:    "tweetbutton",
-        text:   "",
-        count:  "vertical",
-        lang:   "en",
-        related: ""
-      }
+      def script
+        return empty_content if widgetized?
+        @widgetized = true        
+        
+        "<script src=#{twitter_wjs} type='text/javascript'></script>".html_safe
+      end
 
-      options.merge(SocialButtons::Tweet.default_options || {})
-    end
-
-    def tweet_widgets_js_tag
-      @tweet_widgetized = true
-      twitter_wjs = "http://platform.twitter.com/widgets.js"
-      "<script src=#{twitter_wjs} type='text/javascript'></script>".html_safe
-    end
-
-    def tweet_options_to_data_params(opts)
-      params = {}
-      opts.each {|k, v| params["data-#{k}"] = v}
-      params
-    end
+      def twitter_wjs 
+        "http://platform.twitter.com/widgets.js"
+      end
+    end # class
   end
 end

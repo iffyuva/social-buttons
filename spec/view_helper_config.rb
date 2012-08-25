@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'hashie'
 
 class DummyController
   def method_missing(meth, *args, &block)
@@ -22,6 +23,10 @@ module ControllerTestHelpers
       attr_accessor :output_buffer
       @output_buffer = ""
   
+      def request
+        Hashie::Mash.new :url => 'www.hello.com'
+      end
+
       def link_to adr, *args
         options = args.extract_options!          
         content_tag :a, adr, {:href => adr}.merge(options)

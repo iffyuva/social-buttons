@@ -27,6 +27,7 @@ This gem includes the following view helper modules in `social_buttons/view_help
 * `Tweet`
 * `Like`
 * `Pinit` 
+* `GooglePlus`
 
 Using SocialButtons is as simple as adding a single method call to your views:
 
@@ -35,6 +36,7 @@ ERB example:
 <%= tweet_button %>
 <%= like_button(app_id) %>
 <%= pinit_button %>
+<%= google_plus_button %>
 ```
 
 HAML example:
@@ -43,9 +45,10 @@ HAML example:
 = tweet_button
 = like_button(app_id)
 = pinit_button
+= google_plus_button
 ```
 
-Bam.  Done.  You'll have a sweet lookin' Social Buttons all up in your view.
+Bam. Done. You'll have a sweet lookin' Social Buttons all up in your view.
 
 Of course, you can customize it. Depending on the type of button, there are different options.
 
@@ -101,6 +104,15 @@ So, a simple pinit button can be added like this:
 ```erb
 <%= pinit_button(url: request.url, media: @picture.image.url, description: "Amazing Picture") %>
 ```
+
+### Google Plus Button
+
+* `:href` - The URL to share; the default is the current URL.
+* `:size` - Size of button: 'small', 'tall' or 'medium'
+* `:annotation` - The style of button: 'inline', 'bubble', 'none'
+* `:lang` - The locale, fx 'es' for Spanish
+
+See [Google+ button](http://www.google.com/intl/en/webmasters/+1/button/index.html) for more info.
 
 ### Setting universal defaults
 
