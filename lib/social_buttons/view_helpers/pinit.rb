@@ -2,8 +2,8 @@ module SocialButtons
   module Pinit
     include SocialButtons::Assistant
 
-    PINIT_CREATE_BUTTON = "http://pinterest.com/pin/create/button/"
-    PINIT_BUTTON_IMAGE  = "http://assets.pinterest.com/images/PinExt.png"
+    PINIT_CREATE_BUTTON = "//pinterest.com/pin/create/button/"
+    PINIT_BUTTON_IMAGE  = "//assets.pinterest.com/images/PinExt.png"
     CLASS = "pin-it-button"
     TITLE = "Pin It"
 
