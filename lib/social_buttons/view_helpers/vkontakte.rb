@@ -20,7 +20,6 @@ module SocialButtons
         @default_options ||= {
           width: '350',
           type: 'vertical',
-          verb: '0',
           height: '22',
           verb: '0'
         }
